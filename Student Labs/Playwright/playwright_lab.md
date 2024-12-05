@@ -64,7 +64,7 @@ Run the script in the command prompt using:
 ```bash
 pytest -s test_playwright_installation.py
 ```
-You should see the title "Google" printed in the command prompt.
+You should see the title "Google" printed in the command line.
 
 4. Navigate to the tests folder in the project directory.
 5. Create a new file named test_playwright.py
