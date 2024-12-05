@@ -61,6 +61,7 @@ improving test isolation, eliminating code duplication, and others.
 ![Pytest Fixture](selenium_pytest_fixture.png)
 
 3. Create a test function "test_blank_field_error_message". This test function is testing the functionality of the registration page to ensure that an error message is displayed when a user tries to register with a blank username field.
+![Def Test Blank](selenium_test_blankfield.png)
 
 - The function takes a driver parameter, which is an instance of the Selenium WebDriver.
 - It opens the registration page of the Flask application by navigating to http://127.0.0.1:5000/register using the driver.get() method.
