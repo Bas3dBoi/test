@@ -12,7 +12,7 @@ Using Selenium WebDriver, Python, and the pytest library, students will create a
 
 ## Prerequisites
 
-- Ensure you have performed the environment_setup lab before beginning. 
+- Ensure you have performed the "environment_setup.md" lab before beginning. 
 - Familiarity with Python 3.8 or later (this lab will use Visual Studio Code for Windows as the IDE, and Google Chrome 
 for the browser).
 - Familiarity with Python for writing test scripts.
@@ -29,8 +29,17 @@ for the browser).
 - 
 ## Instructions
 
-### Step 1: Environment Setup
+### Step 1: Setup
 
 1. Ensure you have performed the environment_setup lab.
-2. 
+2. Navigate to the tests folder in the project directory.
+3. Create a new file name test_selenium.py
+
+### Step 2: Step by Step Creating Test Cases
+
+1. Import the necessary libraries and modules.
+![Import Statements](postman_api_key.jpg)
+
+
+   
 
