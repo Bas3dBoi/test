@@ -32,7 +32,7 @@ for the browser).
 
 ### Step 1: Setup
 
-1. Ensure you have performed the environment_setup lab.
+1. Ensure you have performed the "environment_setup.md" lab.
 2. Navigate to the tests folder in the project directory.
 3. Create a new file name test_selenium.py
 4. Open a command prompt and use the following to launch the flask application. You may need to cd into the weather_project_folder directory.
