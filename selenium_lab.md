@@ -110,3 +110,23 @@ improving test isolation, eliminating code duplication, and others.
 - Navigates to the home page (http://127.0.0.1:5000).
 - Performs a hover action on the menu item using Selenium's ActionChains class.
 - Verifies that the hover effect is applied correctly by checking the text decoration and background color of the menu item using CSS properties.
+
+9. Run the test. Open a new command prompt seperate from the one running the application. Enter this command:
+```bash
+pytest test_selenium.py
+```
+If you would like to see the print statements from the functions for debugging enter this command:
+```bash
+pytest -s test_selenium.py
+```
+![Test Passed](selenium_test_passed.png)
+Ignore the error messages present in the picture, those have to do with my local machine and do not affect the Selenium tests.
+Observe how Selenium opens a Chrome window and navigates through it as a regular user would. With the use of time.sleep() functions the user is able to observe the interactions instead of everything happening in a blur. 
+
+## Results Overview
+
+
+
+### Troubleshooting Tips
+
+- If any tests fail ensure they are setup properly. Run the test again, sometimes a test will fail due to network issues, latency issues etc. 
