@@ -5,7 +5,7 @@ The main focus of this lab is to install the required dependencies and clone the
 ## Lab Objective
 
 Students will use this lab as a first step to setup the GitHub repository, install certain required 
-Python dependencies/packages, and create the file directory for the test suite.
+Python dependencies/packages such as Selenium and Playwright, and create the file directory for the test suite. 
 
 ## Prerequisites
 - Familiarity with Python 3.8 or later, this lab will use Visual Studio Code for Windows as the IDE.
@@ -17,9 +17,11 @@ Python dependencies/packages, and create the file directory for the test suite.
 ### Step 1: Environment Setup
 
 1. Ensure Python 3.8 or later is installed on your machine.
-2. Clone the project GitHub repository to your local machine.
-3. Open the project. *This lab and subsequent labs use Visual Studio Code for Windows.*
-4. Open a command prompt and do the following, this will install pipenv, install the required
+2. Ensure node.js is installed on your system, this is required in order for playwright to function properly. Follow the link to download and install
+the latest version of [Node.js](https://nodejs.org/en)
+4. Clone the project GitHub repository to your local machine.
+5. Open the project. *This lab and subsequent labs use Visual Studio Code for Windows.*
+6. Open a command prompt and do the following, this will install pipenv, install the required
    dependencies/packages, and activate a virtual environment
    
 ```bash
