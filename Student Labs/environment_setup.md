@@ -17,7 +17,7 @@ Python dependencies/packages such as Selenium and Playwright, and create the fil
 ### Step 1: Environment Setup
 
 1. Ensure Python 3.8 or later is installed on your machine.
-2. Ensure node.js is installed on your machine, this is required in order for playwright to function properly. Follow the link to download and install
+2. Ensure node.js is installed on your machine, this is required in order for Playwright to function properly. Follow the link to download and install
 the latest version of [Node.js](https://nodejs.org/en)
 4. Clone the project GitHub repository to your local machine.
 5. Open the project. *This lab and subsequent labs use Visual Studio Code for Windows.*
