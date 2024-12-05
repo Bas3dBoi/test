@@ -63,26 +63,26 @@ improving test isolation, eliminating code duplication, and others.
 3. Create a test function "test_blank_field_error_message". This test function is testing the functionality of the registration page to ensure that an error message is displayed when a user tries to register with a blank username field.
 ![Def Test Blank](selenium_test_blankfield.png)
 
-- The function takes a driver parameter, which is an instance of the Selenium WebDriver.
-- It opens the registration page of the Flask application by navigating to http://127.0.0.1:5000/register using the driver.get() method.
-- It waits for 2 seconds to observe the page.
-- It waits for the registration form to be present using WebDriverWait and EC.presence_of_element_located() method. It finds the username input field, password input field, and email input field.
-- It fills out the password and email fields with specific values.
-- It waits for 2 seconds to observe the filled form.
-- It finds the sign-up button using XPath and clicks it. Xpath is a way to locate elements in an HTML or XML document. In this case it is used to find an input element of the type "submit" that has a value of "Sign Up".
-- It waits for 2 seconds to observe the click action.
-- It waits for the error message to be displayed using WebDriverWait and EC.presence_of_element_located() method. It finds the error message element.
-- It waits for 2 seconds to observe the error message.
-- It verifies that the error message is displayed by asserting that the validationMessage attribute of the error message element is equal to "Please fill out this field."
-- It waits for 2 seconds to observe the result of the assertion.
+- Function takes a driver parameter, which is an instance of the Selenium WebDriver.
+- Opens the registration page of the Flask application by navigating to http://127.0.0.1:5000/register using the driver.get() method.
+- Waits for 2 seconds to observe the page.
+- Waits for the registration form to be present using WebDriverWait and EC.presence_of_element_located() method. It finds the username input field, password input field, and email input field.
+- Fills out the password and email fields with specific values.
+- Waits for 2 seconds to observe the filled form.
+- Finds the sign-up button using XPath and clicks it. Xpath is a way to locate elements in an HTML or XML document. In this case it is used to find an input element of the type "submit" that has a value of "Sign Up".
+- Waits for 2 seconds to observe the click action.
+- Waits for the error message to be displayed using WebDriverWait and EC.presence_of_element_located() method. It finds the error message element.
+- Waits for 2 seconds to observe the error message.
+- Verifies that the error message is displayed by asserting that the validationMessage attribute of the error message element is equal to "Please fill out this field."
+- Waits for 2 seconds to observe the result of the assertion.
 
 4. Create a test function "test_get_weather". It tests the functionality of the web application by simulating various user interactions.
 ![Def Test Get Weather](selenium_test_getweather.png)
-- Login: The test opens the login page, waits for the login form to load, enters credentials (group6, group6@gmail.com, password), and clicks the login button.
-- Navigate to home page: After login, the test waits for the home page to load and finds the location input field.
-- Enter city name: The test enters a city name (New York) into the location input field and clicks the "Get Weather" button.
-- Verify weather result: The test waits for the current weather page to load and checks if the weather result contains the entered city name (New York).
-- The test uses WebDriverWait to wait for specific elements to be present on the page, ensuring that the test doesn't fail due to timing issues. The time.sleep() statements are used to pause the test for a few seconds, allowing the user to observe the interactions.
+- Opens the login page, waits for the login form to load, enters credentials (group6, group6@gmail.com, password), and clicks the login button.
+- After login, the test waits for the home page to load and finds the location input field.
+- Enters a city name (New York) into the location input field and clicks the "Get Weather" button.
+- Waits for the current weather page to load and checks if the weather result contains the entered city name (New York).
+- Waits for specific elements to be present on the page, ensuring that the test doesn't fail due to timing issues. The time.sleep() statements are used to pause the test for a few seconds, allowing the user to observe the interactions.
 
 5. Create a test function "test_dropdown_functionality". It tests the functionality of the dropdown menu in the web application.
 ![Def Test Dropdown](selenium_test_dropdown.png)
@@ -91,4 +91,22 @@ improving test isolation, eliminating code duplication, and others.
 - Waits for the daily weather page to load.
 - Verifies that the page contains the text "Daily Weather".
 
+6. Create a test function "test_handling_exceptions". It simulates a user entering invalid input and verifies that an error message is displayed.
+![Def Test Exceptions](selenium_test_exceptions.png)
+- Navigates to the home page (http://127.0.0.1:5000).
+- Enters invalid input ("abcd1234") into the location field.
+- Clicks the "Get Weather" button.
+- Waits for the error page to load.
+- Verifies that the error message "An unexpected error occurred." is displayed.
 
+7. Create a test function "test_layout". It verifies the layout of the homepage.
+![Def Test Layout](selenium_test_layout.png)
+- Navigates to the home page (http://127.0.0.1:5000).
+- Checks if an <h1> header element is visible on the page and prints its location.
+- Checks if a text input field with the name "location" is visible on the page and prints its location.
+  
+8. Create a test function "test_hover_action". It tests the funcionality of the hover action when a user hovers their mouse over an item.
+![Def Test Hover Action](selenium_test_hover.png)
+- Navigates to the home page (http://127.0.0.1:5000).
+- Performs a hover action on the menu item using Selenium's ActionChains class.
+- Verifies that the hover effect is applied correctly by checking the text decoration and background color of the menu item using CSS properties.
