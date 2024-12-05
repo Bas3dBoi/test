@@ -18,6 +18,7 @@ for the browser).
 - Familiarity with Python for writing test scripts.
 - Familiarity with web technologies such as CSS, HTML.
 - Familiarity with Python virtual environments.
+- Familiarity using the command prompt.
 - Some familiarity with Selenium WebDriver.
 - Basic troubleshooting skills.
   
@@ -26,7 +27,7 @@ for the browser).
 - Selenium Webdriver - A browser automation tool used to automate web browswer interactions.
 - Pytest - A testing framework used to write and execute simple and scalable test cases.
 - Time - The time module is used for various time related functions.
-- 
+  
 ## Instructions
 
 ### Step 1: Setup
@@ -34,12 +35,59 @@ for the browser).
 1. Ensure you have performed the environment_setup lab.
 2. Navigate to the tests folder in the project directory.
 3. Create a new file name test_selenium.py
+4. Open a command prompt and use the following to launch the flask application. You may need to cd into the weather_project_folder directory.
+
+```bash
+flask run
+```
+5. Once the application is running open it in Chrome, navigate to the registration page and create a user with the following credentials (username: group6, email: group6@gmail.com, password: password), if the user already exists continue ahead with the lab. 
 
 ### Step 2: Step by Step Creating Test Cases
 
-1. Import the necessary libraries and modules.
-![Import Statements](postman_api_key.jpg)
+1. In the test_selenium.py file import the necessary libraries and modules.
+![Import Statements](selenium_import.png)
 
+- Pytest: Used for running the test functions.
+- Webdriver: Provides the WebDriver to control the browser.
+- Keys: Provides keyboard interactions.
+- By: Used to locate elements.
+- WebDriverWait: Used to wait for conditions.
+- Expected_conditions as EC: Provides conditions to wait for.
+- ActionChains: Used to perform complex user interactions.
+- Time: Used to pause the execution.
 
-   
+2. Define a pytest fixture to set up and tear down the WebDriver. Fixtures offer a few benefits such as
+improving test isolation, eliminating code duplication, and others.
+![Pytest Fixture](selenium_pytest_fixture.png)
+
+3. Create a test function "test_blank_field_error_message". This test function is testing the functionality of the registration page to ensure that an error message is displayed when a user tries to register with a blank username field.
+![Def Test Blank](selenium_test_blankfield.png)
+- The function takes a driver parameter, which is an instance of the Selenium WebDriver.
+- It opens the registration page of the Flask application by navigating to http://127.0.0.1:5000/register using the driver.get() method.
+- It waits for 2 seconds to observe the page.
+- It waits for the registration form to be present using WebDriverWait and EC.presence_of_element_located() method. It finds the username input field, password input field, and email input field.
+- It fills out the password and email fields with specific values.
+- It waits for 2 seconds to observe the filled form.
+- It finds the sign-up button using XPath and clicks it. Xpath is a way to locate elements in an HTML or XML document. In this case it is used to find an input element of the type "submit" that has a value of "Sign Up".
+- It waits for 2 seconds to observe the click action.
+- It waits for the error message to be displayed using WebDriverWait and EC.presence_of_element_located() method. It finds the error message element.
+- It waits for 2 seconds to observe the error message.
+- It verifies that the error message is displayed by asserting that the validationMessage attribute of the error message element is equal to "Please fill out this field."
+- It waits for 2 seconds to observe the result of the assertion.
+
+4. Create a test function "test_get_weather". It tests the functionality of the web application by simulating various user interactions.
+![Def Test Get Weather](selenium_test_getweather.png)
+- Login: The test opens the login page, waits for the login form to load, enters credentials (group6, group6@gmail.com, password), and clicks the login button.
+- Navigate to home page: After login, the test waits for the home page to load and finds the location input field.
+- Enter city name: The test enters a city name (New York) into the location input field and clicks the "Get Weather" button.
+- Verify weather result: The test waits for the current weather page to load and checks if the weather result contains the entered city name (New York).
+- The test uses WebDriverWait to wait for specific elements to be present on the page, ensuring that the test doesn't fail due to timing issues. The time.sleep() statements are used to pause the test for a few seconds, allowing the user to observe the interactions.
+
+5. Create a test function "test_dropdown_functionality". It tests the functionality of the dropdown menu in the web application.
+![Def Test Dropdown](selenium_test_dropdown.png)
+- Clicks the dropdown button to reveal the options.
+- Clicks the "Daily Weather" option.
+- Waits for the daily weather page to load.
+- Verifies that the page contains the text "Daily Weather".
+
 
