@@ -123,9 +123,15 @@ pytest -s test_selenium.py
 Ignore the error messages present in the picture, those have to do with my local machine and do not affect the Selenium tests.
 Observe how Selenium opens a Chrome window and navigates through it as a regular user would. With the use of time.sleep() functions the user is able to observe the interactions instead of everything happening in a blur. 
 
+## Try it Yourself
+
+Now that you have a decent understanding of how Selenium WebDriver, Pytest, and the Oracle Forecast application work, create your own test to validate the user registration function. Create a test that registers a new user with credentials of your own choosing, have it validate by searching for a succesful registration message, then login using those new credentials. 
+
 ## Results Overview
+The test_selenium file has tested the following in various ways: form submissions, link and button clicks, dropdown menus, mouse actions, keyboard inputs, layout testing, page navigation, data entry and retrieval, data validation, error messages, and exception handling. There are a plethora of tests that can be written using Selenium WebDriver, these were just a little sample to get you going. 
 
-
+## Coverage Reports
+This test is only part of a suite of various tests designed to create a solid testing plan. Be sure to read the coverage report included with the test suite to better understand how testing is an integral part of the development process.
 
 ### Troubleshooting Tips
 
