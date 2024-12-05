@@ -15,7 +15,6 @@ Using Playwright, Python, and the pytest library, students will create a variety
 ## Prerequisites
 
 - Ensure you have performed the "environment_setup.md" lab before beginning.
-- Ensure you have installed Playwright by following the "install_playwright.md" lab before beginning.
 - Familiarity with Python 3.8 or later (this lab will use Visual Studio Code for Windows as the IDE, and Google Chrome 
 for the browser).
 - Familiarity with Python for writing test scripts.
@@ -35,10 +34,16 @@ for the browser).
 ### Step 1: Setup
 
 1. Ensure you have performed the "environment_setup.md" lab.
-2. Install Playwright, 
-3. Navigate to the tests folder in the project directory.
-4. Create a new file name test_selenium.py
-5. Open a command prompt and use the following to launch the flask application. You may need to cd into the weather_project_folder directory.
+2. Install browsers for Playwright. After completing the "environment_setup.md" lab Playwright should already be installed, however, we must
+still install the browsers that Playwright will use. Do this by running the following command:
+
+```bash
+playwright install
+```
+
+4. Navigate to the tests folder in the project directory.
+5. Create a new file name test_playwright.py
+6. Open a command prompt and use the following to launch the flask application. You may need to cd into the weather_project_folder directory.
 
 ```bash
 flask run
