@@ -5,7 +5,7 @@ The main focus of this lab is to teach students automation testing using Playwri
 ## Intro to Playwright
 
 Playwright is a framework that is used for automating web browser interactions. It supports testing across multiple browsers and provides 
-tools for reliable, fast, and efficient web application testing. It is one of the newer testing tools as it was launched in 2020. It supports a variety of programming languages; 
+tools for reliable, fast, and efficient web application testing. It is one of the newer testing tools as it was recenlty launched in 2020. It supports a variety of programming languages; 
 however, this lab will focus on using Python as well as Chrome for the web browser. Follow this link to learn more about [Playwright](https://playwright.dev/docs/intro)
 
 ## Lab Objective
