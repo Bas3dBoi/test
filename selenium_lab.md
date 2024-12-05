@@ -102,7 +102,7 @@ improving test isolation, eliminating code duplication, and others.
 7. Create a test function "test_layout". It verifies the layout of the homepage.
 ![Def Test Layout](selenium_test_layout.png)
 - Navigates to the home page (http://127.0.0.1:5000).
-- Checks if an <h1> header element is visible on the page and prints its location.
+- Checks if an "<h1>" header element is visible on the page and prints its location.
 - Checks if a text input field with the name "location" is visible on the page and prints its location.
   
 8. Create a test function "test_hover_action". It tests the funcionality of the hover action when a user hovers their mouse over an item.
