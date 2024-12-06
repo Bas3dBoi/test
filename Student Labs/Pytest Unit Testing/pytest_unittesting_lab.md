@@ -80,7 +80,7 @@ the bcrypt instance (bcrypt), and the cache instance (cache) from the weather_pr
 - Assert app.login_manager is not None: Asserts that the login manager instance (app.login_manager) exists.
 
 8. Create a test case "test_bcrypt_initialization". This test ensures that the bcrypt extension is initialized and can be used for password hashing and encryption.
-![Pytest Bcrypt Initialize](pytest_bcrpyt.png)
+![Pytest Bcrypt Initialize](pytest_bcrypt.png)
 - Def test_bcrypt_initialization(test_client): Defines a test function that uses the test_client fixture.
 - Assert bcrypt is not None: Asserts that the bcrypt instance (bcrypt) exists.
 
