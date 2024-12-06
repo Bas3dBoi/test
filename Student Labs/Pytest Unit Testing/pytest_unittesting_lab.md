@@ -299,14 +299,16 @@ pytest test_weatherapp.py
     
 ## Try it Yourself
 
-Now that you have a decent understanding of how Selenium WebDriver, Pytest, and the Oracle Forecast application work, create your own test to validate the user registration function. Create a test that registers a new user with credentials of your own choosing, have it validate by searching for a succesful registration message, then login using those new credentials. 
+Now that you have a decent grap on using Pytest for unit testing, create more tests that verify more API endpoint functionalities. 
 
 ## Results Overview
-The test_selenium file has tested the following in various ways: form submissions, link and button clicks, dropdown menus, mouse actions, keyboard inputs, layout testing, page navigation, data entry and retrieval, data validation, error messages, and exception handling. There are a plethora of tests that can be written using Selenium WebDriver, these were just a little sample to get you going. 
+This suite of tests covers a variety of important aspects of the application, including user authentication, weather data retreival, and APAI endpoint functionality.
 
 ## Coverage Reports
-This test is only part of a suite of various tests designed to create a solid testing plan. Be sure to read the coverage report included with the test suite to better understand how testing is an integral part of the development process.
+This test is only part of a suite of various tests designed to create a solid and robust testing plan. Be sure to read the coverage report included with the test suite to better understand how testing is an integral part of the development process.
 
 ### Troubleshooting Tips
 
-- If any tests fail ensure they are setup properly. Run the test again, sometimes a test will fail due to network issues, latency issues etc. 
+- If any tests fail ensure they are setup properly.
+- Run VSCode in admin mode.
+- Ensure you're saving the python files after every update.
