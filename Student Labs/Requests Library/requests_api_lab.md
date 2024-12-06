@@ -118,3 +118,17 @@ If you would like to see the print statements from the functions for debugging e
 pytest -s test_requests_api.py
 ```
 ![Requests Test Passed](test_requests_success.png)
+
+## Try it Yourself
+
+You should now have a decent understand of using the Requests Library. Can you create a test that combines the registration, login, and logout functionalities in one?
+
+## Results Overview
+The test_requests_api file has tested various API endpoints of the Oracle Forecast application. We can be ensured that the API endpoints function correctly.
+
+## Coverage Reports
+This test is only part of a suite of various tests designed to create a solid testing plan. Be sure to read the coverage report included with the test suite to better understand how testing is an integral part of the development process.
+
+### Troubleshooting Tips
+
+- If any tests fail ensure they are setup properly. Run the test again, sometimes a test will fail due to network issues, latency issues etc. 
