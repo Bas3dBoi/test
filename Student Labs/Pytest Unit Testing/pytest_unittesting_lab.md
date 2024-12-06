@@ -143,7 +143,7 @@ pytest test_app.py
 - Loaded_user = load_user(user.id): Calls the load_user function with the user's ID and stores the result in loaded_user.
 - Assert loaded_user == user: Asserts that the loaded user is the same as the original user.
 
-18. 12. Run the test. Open a command prompt and ensure you are in the tests directory, use this command:
+18. Run the test. Open a command prompt and ensure you are in the tests directory, use this command:
 ```bash
 pytest test_user_auth.py
 ```
