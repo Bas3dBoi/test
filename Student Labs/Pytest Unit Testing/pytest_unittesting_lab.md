@@ -186,7 +186,7 @@ pytest test_weather_api.py
 - From unittest.mock import patch, MagicMock: Imports the patch and MagicMock classes from the unittest.mock library. These are used to mock the Nominatim geolocator and create mock responses.
 - From weather_project_folder.blueprints.weather.weather_object import Weather: Imports the Weather class from the weather_object module.
 
-25.Create test case "test_get_coordinates". 
+25. Create test case "test_get_coordinates". 
 ![Pytest Object Coordinates](pytest_object_coord.png)
 - Def test_get_coordinates(): Defines the test_get_coordinates test function.
 - Weather = Weather("Raleigh"): Creates a new Weather instance with the location "Raleigh".
