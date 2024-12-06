@@ -299,7 +299,7 @@ pytest test_weatherapp.py
     
 ## Try it Yourself
 
-Now that you have a decent grap on using Pytest for unit testing, create more tests that verify more API endpoint functionalities. 
+Now that you have a decent grasp on using Pytest for unit testing, create more tests that verify more API endpoint functionalities. 
 
 ## Results Overview
 This suite of tests covers a variety of important aspects of the application, including user authentication, weather data retreival, and APAI endpoint functionality.
