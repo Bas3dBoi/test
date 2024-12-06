@@ -96,18 +96,58 @@ the bcrypt instance (bcrypt), and the cache instance (cache) from the weather_pr
 - Assert 'user_auth' in app.blueprints: Asserts that the user_auth blueprint is registered in the application.
 - Assert 'error_handler' in app.blueprints: Asserts that the error_handler blueprint is registered in the application.
 
+12. Run the test. Open a command prompt and ensure you are in the tests directory, use this command:
+```bash
+pytest test_app.py
+```
+![Test Passed APP](pytest_app_passed.png)
 
-12. Run the test. Open a new command prompt seperate from the one running the application. Enter this command:
+13. Create a new test file named "test_user_auth.py". This file is a test suite for the user authentication components of the application.
+
+14. In "test_user_auth.py" import the necessary packages.
+![Import User Auth](pytest_user_auth_imports.png)
+- Import pytest: Imports the pytest library, which is used for writing and running test cases.
+- From flask import Flask: Imports the Flask class to create a Flask application instance.
+- From flask_login import LoginManager: Imports the LoginManager class from Flask-Login to manage user sessions.
+- From weather_project_folder.blueprints.userauth.user_auth import User, RegisterForm, load_user: Imports the User model, RegisterForm class, and load_user function from the user authentication blueprint.
+- From weather_project_folder.extensions import db, bcrypt: Imports the SQLAlchemy database instance (db) and the bcrypt instance (bcrypt) from the extensions module.
+
+15. Define a pytest fixture to set up an in-memory SQLite database, initiallizze various extensions, and create database tables.
+![Pytest UserAuth Fixture](pytest_userauth_fixture.png)
+- Create a new instance of the Flask web framework, passing the current module name (__name__) as the app name.
+- Set the database URI to an in-memory SQLite database, which means the database will be created in RAM and deleted when the test is finished.
+- Set a secret key for the app, which is used for security purposes such as signing session cookies.
+- Initialize the database (using SQLAlchemy) and bcrypt (a password hashing library) with the Flask app.
+- Create a new instance of the LoginManager class and initialize it with the Flask app.
+- Push the app context which makes the app instance available to other parts of the code.
+- Create all the database tables defined in the app's models.
+- Yield the app instance to the test, allowing it to use the app for testing purposes.
+- After the test is finished it drops all the database tables to clean up.
+
+16. Create a test case "test_validate_username". This tests the validate_username method of the RegisterForm class.
+![Pytest Userauth Username](pytest_userauth_username.png)
+- Def test_validate_username(app):: Defines a test function that uses the app fixture.
+- Docstring: Describes the purpose of the test, which is to verify that the validate_username method of the RegisterForm class correctly identifies an existing username.
+- User = User(...): Creates a new User instance with the username "testuser".
+- Db.session.add(user): Adds the new user to the database session.
+- Db.session.commit(): Commits the transaction to save the user to the database.
+- With app.test_request_context('/register'): Creates a test request context for the /register endpoint.
+- Form = RegisterForm(...): Creates a new RegisterForm instance with the username "testuser".
+- With pytest.raises(Exception):: Asserts that an exception is raised when calling form.validate_username(form.username), indicating that the username "testuser" already exists.
+
+17. Create a test case "test_load_user". This test checks if load_user correctly retireves a user from the database.
+![Pytest Userauth Load User](pytest_userauth_load.png)
+- User = User(...): Creates a new User instance with the username "testuser".
+- Db.session.add(user): Adds the new user to the database session.
+- Db.session.commit(): Save the user to the database.
+- Loaded_user = load_user(user.id): Calls the load_user function with the user's ID and stores the result in loaded_user.
+- Assert loaded_user == user: Asserts that the loaded user is the same as the original user.
+
+18. 12. Run the test. Open a command prompt and ensure you are in the tests directory, use this command:
 ```bash
-pytest test_selenium.py
+pytest test_user_auth.py
 ```
-If you would like to see the print statements from the functions for debugging enter this command:
-```bash
-pytest -s test_selenium.py
-```
-![Test Passed](selenium_test_passed.png)
-Ignore the error messages present in the picture, those have to do with my local machine and do not affect the Selenium tests.
-Observe how Selenium opens a Chrome window and navigates through it as a regular user would. With the use of time.sleep() functions the user is able to observe the interactions instead of everything happening in a blur. 
+![Test Passed Userauth](pytest_userauth_passed.png)
 
 ## Try it Yourself
 
