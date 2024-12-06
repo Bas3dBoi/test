@@ -253,7 +253,7 @@ pytest test_weather_object.py
 - Login_user(User('testuser')): Logs in the test user using the login_user function.
 
 33. Create a test case "test_api_get_weather". This test checks that the api_get_weather endpoint returns current weather data successfully.
-![Pytest Weatherapp Current](pytest_weatherapp_current.py)
+![Pytest Weatherapp Current](pytest_weatherapp_current.png)
 - Def test_api_get_weather(app, client):: Defines a test function that uses the app and client fixtures.
 - Response = client.get('/api/current_weather/Raleigh'): Sends a GET request to the /api/current_weather/Raleigh endpoint.
 - Assert response.status_code == 200: Asserts that the response status code is 200 (OK).
