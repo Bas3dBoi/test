@@ -172,6 +172,14 @@ pytest test_user_auth.py
 - Weather_data = get_weather_data(-78.6382, 35.7796): Calls the get_weather_data function again with the same coordinates and stores the result in weather_data.
 - Assert weather_data is None: Asserts that the returned weather data is None, indicating that the function correctly handles a 404 response.
 
+22. Run the test. Open a command prompt and ensure you are in the tests directory, use this command:
+```bash
+pytest test_weather_api.py
+```
+![Test Passed Weather API](pytest_testweather_passed.png)
+
+
+
 
 ## Try it Yourself
 
