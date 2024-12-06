@@ -178,8 +178,30 @@ pytest test_weather_api.py
 ```
 ![Test Passed Weather API](pytest_testweather_passed.png)
 
+23. Create a new test file named "test_weather_object.py". This is a unit test for the get_coordinates method of the Weather class. It tests whether the method correctly retrieves coordinates for a given location ("Raleigh") by mocking the Nominatim geolocator to return predefined coordinates.
 
+24. In the test file "test_weather_object.py" import the required packages
+![Pytest Object Imports](pytest_object_imports.png)
+- Import pytest: Imports the pytest library, which is used for writing and running test cases.
+- From unittest.mock import patch, MagicMock: Imports the patch and MagicMock classes from the unittest.mock library. These are used to mock the Nominatim geolocator and create mock responses.
+- From weather_project_folder.blueprints.weather.weather_object import Weather: Imports the Weather class from the weather_object module.
 
+25.Create test case "test_get_coordinates". 
+![Pytest Object Coordinates](pytest_object_coord.png)
+- Def test_get_coordinates(): Defines the test_get_coordinates test function.
+- Weather = Weather("Raleigh"): Creates a new Weather instance with the location "Raleigh".
+- With patch('weather_project_folder.blueprints.weather.weather_object.Nominatim') as mock_nominatim:: Patches the Nominatim geolocator in the weather_object module with a mock object. The mock object is assigned to mock_nominatim.
+- Mock_geolocator = mock_nominatim.return_value: Sets the return value of the mock_nominatim object to mock_geolocator.
+- Mock_geolocator.geocode.return_value = MagicMock(latitude=35.7796, longitude=-78.6382, address="Raleigh, NC"): Sets the return value of the geocode method of the mock_geolocator to a mock object with predefined latitude, longitude, and address.
+- Coordinates = weather.get_coordinates(): Calls the get_coordinates method of the Weather instance and stores the result in coordinates.
+- Assert coordinates == (35.7796, -78.6382): Asserts that the returned coordinates match the predefined coordinates (35.7796, -78.6382).
+- Assert weather.location == "Raleigh, NC": Asserts that the location attribute of the Weather instance is set to "Raleigh, NC".
+
+26. Run the test. Open a command prompt and ensure you are in the tests directory, use this command:
+```bash
+pytest test_weather_object.py
+```
+![Test Passed Weather Object](pytest_object_passed.png)
 
 ## Try it Yourself
 
