@@ -203,6 +203,100 @@ pytest test_weather_object.py
 ```
 ![Test Passed Weather Object](pytest_object_passed.png)
 
+27. Create a new test file named "test_weatherapp.py". This file will run tests taht ensure the weather endpoints are working correctly.
+
+28. In the "test_weatherapp.py" file import all required packages.
+![Pytest Weatherapp Import](pytest_weatherapp_imports.png)
+- Import pytest: Imports the pytest library, which is used for writing and running test cases.
+- From flask import Flask, session: Imports the Flask class to create a Flask application instance and the session object to manage user sessions.
+- From flask_login import LoginManager, UserMixin, login_user: Imports the LoginManager, UserMixin, and login_user functions from Flask-Login to manage user sessions and log in users.
+- From weather_project_folder.blueprints.weather.weatherapp import weather_app: Imports the weather_app blueprint.
+- From weather_project_folder.extensions import db, cache: Imports the SQLAlchemy database instance (db) and the cache instance (cache) from the extensions module.
+- From weather_project_folder.blueprints.weather.weather_object import Weather: Imports the Weather class from the weather_object module.
+
+29. Create a "User" class.This class definition defines a User class that inherits from UserMixin, which is a mixin class provided by Flask-Login to implement user authentication.
+![Pytest Weatherapp Mixin](pytest_weatherapp_mixin.png)
+- Init(self, id): Initializes a new User instance with a given id, which is stored as an instance attribute. This method is used to create a new user object for testing purposes.
+
+30. Define a pytest fixture "app" to create a flask app, configure it, and yield it for testing.
+![Pytest Weather App Fixture](pytest_weatherapp_fixture.png)
+- @pytest.fixture: Defines a pytest fixture named app.
+- Def app():: Defines the app fixture function.
+- App = Flask(__name__): Creates a new Flask application instance.
+- App.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:': Configures the application to use an in-memory SQLite database for testing.
+- App.config['SECRET_KEY'] = 'test_secret_key': Sets a secret key for the application.
+- App.config['CACHE_TYPE'] = 'SimpleCache': Configures the application to use a simple cache.
+- Db.init_app(app): Initializes the SQLAlchemy database instance with the Flask application.
+- Cache.init_app(app): Initializes the cache instance with the Flask application.
+- Login_manager = LoginManager(): Creates a new LoginManager instance.
+- Login_manager.init_app(app): Initializes the LoginManager instance with the Flask application.
+- @login_manager.user_loader: Defines a user loader function for the LoginManager.
+- Def load_user(user_id):: Defines the load_user function that returns a User instance with the given user_id.
+- App.register_blueprint(weather_app): Registers the weather_app blueprint with the Flask application.
+- App.app_context().push(): Pushes the application context to make it the current context.
+- Db.create_all(): Creates all the database tables defined in the SQLAlchemy models.
+- Yield app: Yields the Flask application instance for use in the tests.
+- Db.drop_all(): Drops all the database tables after the tests have completed.
+
+31. Define a pytest fixture "client" to set up a test client.
+![Pytest Weatherapp Fixture Client](pytest_weatherapp_client.png)
+- @pytest.fixture: Defines a pytest fixture named client.
+- Def client(app): Defines the client fixture function that takes the app fixture as an argument.
+- Return app.test_client(): Returns a test client for making requests to the Flask application.
+
+32. Create a helper function "login_test_user". This function logs in a test user for testing purpposes.
+![Pytest Weatherapp Helper](pytest_weatherapp_helper.png)
+- Def login_test_user(client, app):: Defines a helper function to log in the test user.
+- With app.test_request_context():: Creates a test reques context.
+- With client.session_transaction() as sess:: Opens a session transaction.
+- Sess['user_id'] = 'testuser': Sets the user_id in the session to 'testuser'.
+- Login_user(User('testuser')): Logs in the test user using the login_user function.
+
+33. Create a test case "test_api_get_weather". This test checks that the api_get_weather endpoint returns current weather data successfully.
+![Pytest Weatherapp Current](pytest_weatherapp_current.py)
+- Def test_api_get_weather(app, client):: Defines a test function that uses the app and client fixtures.
+- Response = client.get('/api/current_weather/Raleigh'): Sends a GET request to the /api/current_weather/Raleigh endpoint.
+- Assert response.status_code == 200: Asserts that the response status code is 200 (OK).
+- Aassert b'current_weather' in response.data: Asserts that the response data contains the text 'current_weather'.
+
+34. Create a test case "test_api_get_daily_weather". This test verifies the api_get_daily_weather endpoint.
+![Pytest Weatherapp Daily](pytest_weatherapp_daily.png)
+- Def test_api_get_daily_weather(app, client):: Defines a test function that uses the app and client fixtures.
+- Response = client.get('/api/daily_weather/Raleigh'): Sends a GET request to the /api/daily_weather/Raleigh endpoint.
+- Assert response.status_code == 200: Asserts that the response status code is 200 (OK).
+- Assert b'daily_weather' in response.data: Asserts that the response data contains the text 'daily_weather'.
+
+35. Create a test case "test_api_get_hourly_weather". This test verifies the api_get_hourly_weather endpoint.
+![Pytest Weatherapp Hourly](pytest_weatherapp_hourly.png)
+- Def test_api_get_hourly_weather(app, client):: Defines a test function that uses the app and client fixtures.
+- Response = client.get('/api/hourly_weather/Raleigh'): Sends a GET request to the /api/hourly_weather/Raleigh endpoint.
+- Assert response.status_code == 200: Asserts that the response status code is 200 (OK).
+- Assert b'hourly_weather' in response.data: Asserts that the response data contains the text 'hourly_weather'.
+
+36. Create a test case "test_get_daily_weather_not_found". This tests the /daily_weather route when the requested location does not exist.
+![Pytest Weatherapp Daily Error](pytest_weatherapp_dailyerror.png)
+- Def test_get_daily_weather_not_found(app, client):: Defines a test function that uses the app and client fixtures.
+- Login_test_user(client, app): Logs in the test user using the login_test_user helper function.
+- With client.session_transaction() as sess:: Opens a session transaction.
+- Sess['location'] = 'NonExistentLocation': Sets the location in the session to 'NonExistentLocation'.
+- Response = client.post('/daily_weather'): Sends a POST request to the /daily_weather endpoint.
+- Assert response.status_code == 500: Asserts that the response status code is 500 (Internal Server Error).
+
+37. Create a test case "test_get_hourly_weather_not_found". This tests the /hourly_weather route when the requested location does not exist.
+![Pytest Weatherapp Hourly Error](pytest_weatherapp_hourlyerror.png)
+- Def test_get_hourly_weather_not_found(app, client):: Defines a test function that uses the app and client fixtures.
+- Login_test_user(client, app): Logs in the test user using the login_test_user helper function.
+- With client.session_transaction() as sess:: Opens a session transaction.
+- Sess['location'] = 'NonExistentLocation': Sets the location in the session to 'NonExistentLocation'.
+- Response = client.post('/hourly_weather'): Sends a POST request to the /hourly_weather endpoint.
+- Assert response.status_code == 500: Asserts that the response status code is 500 (Internal Server Error).
+
+38.  Run the test. Open a command prompt and ensure you are in the tests directory, use this command:
+```bash
+pytest test_weatherapp.py
+```
+![Test Passed WeatherApp](pytest_weatherapp_passed.png)
+    
 ## Try it Yourself
 
 Now that you have a decent understanding of how Selenium WebDriver, Pytest, and the Oracle Forecast application work, create your own test to validate the user registration function. Create a test that registers a new user with credentials of your own choosing, have it validate by searching for a succesful registration message, then login using those new credentials. 
