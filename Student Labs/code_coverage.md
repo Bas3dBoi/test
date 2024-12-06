@@ -181,7 +181,7 @@ code.
 ![Coverage Report Files](coverage_report_files.png)
 ![Coverage Report Functions](coverage_report_functions.png)
 ![Coverage Report Classes](coverage_report_classes.png)
-
+![Coverage Command Line](coverage_command_line.png)
 ### References to Tools and Resources Used
 - [Coverage.py](https://coverage.readthedocs.io/en/7.6.9/)
 - [Pytest](https://docs.pytest.org/en/stable/contents.html)
