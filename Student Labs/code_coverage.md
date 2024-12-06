@@ -188,9 +188,6 @@ Percentage of statements executed: **73%**
 ![Coverage Report Functions](coverage_report_functions.png)
 ![Coverage Report Classes](coverage_report_classes.png)
 
-### Definitions and Terms
-- Definitions of coverage metrics and terms used in the report.
-
 ### References to Tools and Resources Used
 - [Coverage.py](https://coverage.readthedocs.io/en/7.6.9/)
 - [Pytest](https://docs.pytest.org/en/stable/contents.html)
