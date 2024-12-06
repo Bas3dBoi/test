@@ -149,6 +149,30 @@ pytest test_user_auth.py
 ```
 ![Test Passed Userauth](pytest_userauth_passed.png)
 
+19. Create a new test file named "test_weather_api". It mocks the requests.get method and tests the behavior of the get_weather_data function.
+
+20. In "test_weather_api" import the necessary packages.
+![Pytest Test Weather Imports](pytest_testweather_imports.png)
+- Import pytest: Imports the pytest library, which is used for writing and running test cases.
+- Import requests: Imports the requests library, which is used for sending HTTP requests.
+- From unittest.mock import patch, MagicMock: Imports the patch and MagicMock classes from the unittest.mock library. These are used to mock the requests.get method and create mock responses.
+- From weather_project_folder.blueprints.weather.weatherAPI import get_weather_data: Imports the get_weather_data function from the weatherAPI module.
+
+21. Create test case "test_get_weather_data". The test calls the get_weather_data function with some coordinates and asserts that the returned weather data matches the mock response.
+![Pytest Test Weather Get Data](pytest_testweather_mock.png)
+- @patch('weather_project_folder.blueprints.weather.weatherAPI.requests.get'): This decorator patches the requests.get method in the weatherAPI module with a mock object. The mock object is passed as an argument (mock_get) to the test_get_weather_data function.
+- Def test_get_weather_data(mock_get):: Defines the test_get_weather_data test function, which takes the mock object (mock_get) as an argument.
+- Mock_response = MagicMock(): Creates a mock response object using MagicMock.
+- Mock_response.status_code = 200: Sets the status code of the mock response to 200 (OK).
+- Mock_response.json.return_value = {'currently': {'time': 1609459200}}: Sets the return value of the json method of the mock response to a predefined JSON object representing weather data.
+- Mock_get.return_value = mock_response: Sets the return value of the mocked requests.get method to the mock response object.
+- Weather_data = get_weather_data(-78.6382, 35.7796): Calls the get_weather_data function with the coordinates for Raleigh, NC (-78.6382, 35.7796) and stores the result in weather_data.
+- Assert weather_data == {'currently': {'time': 1609459200}}: Asserts that the returned weather data matches the predefined JSON object.
+- Mock_response.status_code = 404: Changes the status code of the mock response to 404 (Not Found).
+- Weather_data = get_weather_data(-78.6382, 35.7796): Calls the get_weather_data function again with the same coordinates and stores the result in weather_data.
+- Assert weather_data is None: Asserts that the returned weather data is None, indicating that the function correctly handles a 404 response.
+
+
 ## Try it Yourself
 
 Now that you have a decent understanding of how Selenium WebDriver, Pytest, and the Oracle Forecast application work, create your own test to validate the user registration function. Create a test that registers a new user with credentials of your own choosing, have it validate by searching for a succesful registration message, then login using those new credentials. 
