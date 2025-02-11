@@ -25,7 +25,7 @@ The test cases for Sprint 1 will cover the following areas:
 
 - Test case 1: Test User Authentication
 
-  ```python
+```python
 
 import pytest
 from flask import Flask
@@ -43,11 +43,11 @@ def test_validate_username(app):
         with pytest.raises(Exception):
             form.validate_username(form.username)
 
-  ```
+```
 
 - Test Case 2: Test Selenium Register User
 
-  ```python
+```python
 
 import pytest
 from selenium import webdriver
@@ -78,11 +78,11 @@ from selenium.webdriver.common.keys import Keys
     assert "Registration Successful!" in success_message.text
     time.sleep(2)  # Pause for 2 seconds to observe the result
 
-    ```
+```
 
 Test Case 3: Test Database Initialization
 
-    ```python
+```python
 
 import pytest
 
@@ -92,4 +92,4 @@ def test_database_initialization(test_client):
         tables = inspector.get_table_names()
         assert 'user' in tables
 
-    ```
+```
