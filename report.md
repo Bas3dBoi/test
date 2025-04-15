@@ -205,7 +205,6 @@
 | GET        | /budget/10182   | 11         | 0       | 14          | 32.21        | 8        | 181      | 8759                 | 0           | 0                  |
 | GET        | /profile        | 46973      | 0       | 7           | 13.01        | 2        | 345      | 3103                 | 17.4        | 0                  |
 | Aggregated |  | 179479       | 0          | 16      | 36.72       | 2            | 885      | 11041.03 | 63.1                 | 0           |                    |
-| Aggregated |  | 21417 | 0 | 3 | 6.18 | 2 | 765 | 3101.72 | 10 | 0 |
 
 ### Response Time Statistics
 | Method | Name            | 50%ile (ms) | 60%ile (ms) | 70%ile (ms) | 80%ile (ms) | 90%ile (ms) | 95%ile (ms) | 99%ile (ms) | 100%ile (ms) |
